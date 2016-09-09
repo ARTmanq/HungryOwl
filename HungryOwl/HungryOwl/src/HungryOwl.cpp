@@ -1,40 +1,54 @@
 #include <iostream>
 #include <string>
 
-int main() {
+int getnum();
+
+int main()
+{
 	std::cout << "---<<<   HUNGRY OWL   >>>---" << std::endl;
 	std::cout << "1. New game" << std::endl;
 	std::cout << "2. Exit" << std::endl;
 	std::cout << "Select:   " << std::endl;
 	int menuChoice = 0;
-	std::string inputBuffer;
 	while(menuChoice != 1 || menuChoice != 2)
+	{
+		menuChoice = getnum();
+		switch(menuChoice)
+		{
+		case 1:
+			{
+				break;
+			}
+		case 2:
+			{
+				break;
+			}
+		default:
+			{
+				std::cout << "Incorrect choice, try again:" << std::endl;
+			}
+		}
+	}
+	return 0;
+}
+
+int getnum()
+{
+	std::string inputBuffer;
+	int result = 0;
+	bool correctInteger = false;
+	while(!correctInteger)
 	{
 		std::cin >> inputBuffer;
 		try
 		{
-			menuChoice = std::stoi(inputBuffer);
-			switch(menuChoice)
-			{
-			case 1:
-				{
-					break;
-				}
-			case 2:
-				{
-					break;
-				}
-			default:
-				{
-					std::cout << "Incorrect choice, try again:" << std::endl;
-				}
-			}
+			result = std::stoi(inputBuffer);
+			correctInteger = true;
 		}
 		catch(std::invalid_argument &ia)
 		{
-			std::cout << "Incorrect choice, try again:" << std::endl;
+			std::cout << "Incorrect integer, try again:" << std::endl;
 		}
-
 	}
-	return 0;
+	return result;
 }
