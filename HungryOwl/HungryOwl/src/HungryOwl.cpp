@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 int main() {
 	std::cout << "---<<<   HUNGRY OWL   >>>---" << std::endl;
@@ -6,25 +7,34 @@ int main() {
 	std::cout << "2. Exit" << std::endl;
 	std::cout << "Select:   " << std::endl;
 	int menuChoice = 0;
+	std::string inputBuffer;
 	while(menuChoice != 1 || menuChoice != 2)
 	{
-		std::cin >> menuChoice;
-		switch(menuChoice)
+		std::cin >> inputBuffer;
+		try
 		{
-		case 1:
+			menuChoice = std::stoi(inputBuffer);
+			switch(menuChoice)
 			{
-				int a;
-				break;
-			}
-		case 2:
-			{
-				break;
-			}
-		default:
-			{
-				std::cout << "Incorrect choice, try again:" << std::endl;
+			case 1:
+				{
+					break;
+				}
+			case 2:
+				{
+					break;
+				}
+			default:
+				{
+					std::cout << "Incorrect choice, try again:" << std::endl;
+				}
 			}
 		}
+		catch(std::invalid_argument &ia)
+		{
+			std::cout << "Incorrect choice, try again:" << std::endl;
+		}
+
 	}
 	return 0;
 }
