@@ -13,6 +13,7 @@ int main() {
 		{
 		case 1:
 			{
+				int a;
 				break;
 			}
 		case 2:
