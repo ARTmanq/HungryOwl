@@ -4,6 +4,7 @@
 
 int getnum();
 void setDifficulty(Field&);
+void game(Field&);
 
 int main()
 {
@@ -21,6 +22,7 @@ int main()
 			case 1:
 				{
 					setDifficulty(field);
+					game(field);
 					break;
 				}
 			case 2:
@@ -90,5 +92,19 @@ void setDifficulty(Field& field)
 					std::cout << "Incorrect choice, try again:" << std::endl;
 				}
 		}
+	}
+}
+
+void game(Field& field)
+{
+	std::cout << "Enter coordinates:" << std::endl;
+	int x = getnum(), y = getnum();
+	try
+	{
+
+	}
+	catch(std::invalid_argument &ia)
+	{
+
 	}
 }
