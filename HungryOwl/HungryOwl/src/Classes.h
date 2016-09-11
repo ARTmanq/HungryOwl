@@ -11,7 +11,7 @@ enum class Colors
 class Cell
 {
 	public:
-	
+		Cell();
 	private:
 		int detectedAnimals;
 		Colors cellColor;

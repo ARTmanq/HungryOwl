@@ -64,7 +64,6 @@ void setDifficulty()
 	std::cout << "2. Medium" << std::endl;
 	std::cout << "3. Hard" << std::endl;
 	int menuChoice;
-	int a;
 	while(menuChoice < 1 || menuChoice > 3)
 	{
 		menuChoice = getnum();
