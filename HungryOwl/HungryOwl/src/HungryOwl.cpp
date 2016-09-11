@@ -2,6 +2,7 @@
 #include <string>
 
 int getnum();
+void setDifficulty();
 
 int main()
 {
@@ -15,20 +16,20 @@ int main()
 		menuChoice = getnum();
 		switch(menuChoice)
 		{
-		case 1:
-			{
-
-				break;
-			}
-		case 2:
-			{
-				return 0;
-				break;
-			}
-		default:
-			{
-				std::cout << "Incorrect choice, try again:" << std::endl;
-			}
+			case 1:
+				{
+					setDifficulty();
+					break;
+				}
+			case 2:
+				{
+					return 0;
+					break;
+				}
+			default:
+				{
+					std::cout << "Incorrect choice, try again:" << std::endl;
+				}
 		}
 	}
 	return 0;
@@ -53,4 +54,36 @@ int getnum()
 		}
 	}
 	return result;
+}
+
+void setDifficulty()
+{
+	std::cout << "   Select difficulty:" << std::endl;
+	std::cout << "1. Easy" << std::endl;
+	std::cout << "2. Medium" << std::endl;
+	std::cout << "3. Hard" << std::endl;
+	int menuChoice;
+	while(menuChoice < 1 || menuChoice > 3)
+	{
+		menuChoice = getnum();
+		switch(menuChoice)
+		{
+			case 1:
+				{
+					break;
+				}
+			case 2:
+				{
+					break;
+				}
+			case 3:
+				{
+					break;
+				}
+			default:
+				{
+					std::cout << "Incorrect choice, try again:" << std::endl;
+				}
+		}
+	}
 }
