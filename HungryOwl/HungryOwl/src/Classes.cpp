@@ -28,7 +28,7 @@ void Field::set(unsigned int s, unsigned int AoM, unsigned int AoC)
 	{
 		x = gen() % s;
 		y = gen() % s;
-		if(!checkCell(x, y))
+		if(checkCell(x, y))
 		{
 			Mouse mouse;
 			addAnimal(x, y, &mouse);
@@ -38,7 +38,7 @@ void Field::set(unsigned int s, unsigned int AoM, unsigned int AoC)
 	{
 		x = gen() % s;
 		y = gen() % s;
-		if(!checkCell(x, y))
+		if(checkCell(x, y))
 		{
 			Cat cat;
 			addAnimal(x, y, &cat);
@@ -69,9 +69,9 @@ Cell::Cell(): detectedAnimals(0), cellColor(Colors::green), animal(nullptr)
 bool Cell::isFree() const
 {
 	if(animal == nullptr)
-		return false;
-	else
 		return true;
+	else
+		return false;
 }
 
 void Cell::setAnimal(Animal* creature)

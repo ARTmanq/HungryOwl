@@ -75,7 +75,7 @@ void setDifficulty(Field& field)
 		{
 			case 1:
 				{
-					field.set(10, 8, 8);
+					field.set(4, 2, 2);
 					break;
 				}
 			case 2:
