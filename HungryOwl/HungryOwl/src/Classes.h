@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <random>
 
 enum class Colors 
 {
@@ -11,42 +12,52 @@ enum class Colors
 class Animal
 {
 	public:
-		Animal();
-		virtual ~Animal();
-		virtual void injure();
-		virtual void move() const;
+		Animal(){};
+		virtual ~Animal(){};
+		virtual void injure(){};
+		virtual void move() const{};
 	private:
 		unsigned int HP;
+};
+
+class Cell
+{
+	public:
+		Cell(){};
+		~Cell(){};
+		void addAnimal(Animal*) {};
+	private:
+		unsigned int detectedAnimals;
+		Colors cellColor;
+		Animal *animal;
 };
 
 class Owl : public Animal
 {
 	public:
-		void move() const;
+		Owl(): Animal(){};
+		virtual ~Owl(){};
+		void move(unsigned int, unsigned int) const{};
+		void attack(Cell&) {};
 };
 
 class Mouse : public Animal
 {
 	public:
+		Mouse(): Animal() {};
+		virtual ~Mouse(){};
 		void move() const;
 };
 
 class Cat: public Animal
 {
 	public:
+		Cat(){};
+		virtual ~Cat(){};
 		void move() const;
 };
 
-class Cell
-{
-	public:
-		Cell();
-		~Cell(){};
-	private:
-		unsigned int detectedAnimals;
-		Colors cellColor;
-		Animal *animal;
-};
+
 
 class Field
 {
@@ -55,9 +66,11 @@ class Field
 		~Field();
 		void set(unsigned int, unsigned int, unsigned int); 
 		void show() const;
-		void refresh();
+		void moveAnimals() {};
+		void discoverCell(unsigned int, unsigned int) {};
+		Cell& getCell(unsigned int, unsigned int) {};
 	private:
-		std::vector<Cell> field;
+		std::vector<std::vector<Cell> > field;
 		unsigned int size;
 		unsigned int amountOfMices;
 		unsigned int amountOfCats;

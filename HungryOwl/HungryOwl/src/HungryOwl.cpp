@@ -4,11 +4,12 @@
 
 int getnum();
 void setDifficulty(Field&);
-void game(Field&);
+void game(Field&, Owl&);
 
 int main()
 {
 	Field field;
+	Owl owl;
 	std::cout << "---<<<   HUNGRY OWL   >>>---" << std::endl;
 	std::cout << "1. New game" << std::endl;
 	std::cout << "2. Exit" << std::endl;
@@ -22,7 +23,7 @@ int main()
 			case 1:
 				{
 					setDifficulty(field);
-					game(field);
+					game(field, owl);
 					break;
 				}
 			case 2:
@@ -32,7 +33,7 @@ int main()
 				}
 			default:
 				{
-					std::cout << "Incorrect choice, try again:" << std::endl;
+					std::cout << "Wrong choice, try again:" << std::endl;
 				}
 		}
 	}
@@ -54,7 +55,7 @@ int getnum()
 		}
 		catch(std::invalid_argument &ia)
 		{
-			std::cout << "Incorrect integer, try again:" << std::endl;
+			std::cout << "Wrong integer, try again:" << std::endl;
 		}
 	}
 	return result;
@@ -89,22 +90,32 @@ void setDifficulty(Field& field)
 				}
 			default:
 				{
-					std::cout << "Incorrect choice, try again:" << std::endl;
+					std::cout << "Wrong choice, try again:" << std::endl;
 				}
 		}
 	}
 }
 
-void game(Field& field)
+void game(Field& field, Owl& owl)
 {
-	std::cout << "Enter coordinates:" << std::endl;
-	int x = getnum(), y = getnum();
-	try
+	bool owlMoved = false;
+	unsigned int x, y;
+	while(!owlMoved)
 	{
-
+		std::cout << "Enter coordinates:" << std::endl;
+		x = getnum();
+		y = getnum();
+		try
+		{
+			owl.move(x, y);
+			owlMoved = true;
+		}
+		catch(std::invalid_argument &ia)
+		{
+			std::cout << "Invalid coordinates, try again:" << std::endl;
+		}
 	}
-	catch(std::invalid_argument &ia)
-	{
-
-	}
+	field.moveAnimals();
+	field.discoverCell(x, y);
+	owl.attack(field.getCell(x, y));
 }
