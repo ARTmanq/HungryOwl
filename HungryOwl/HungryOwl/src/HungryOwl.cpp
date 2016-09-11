@@ -100,6 +100,7 @@ void game(Field& field, Owl& owl)
 {
 	bool owlMoved = false;
 	unsigned int x, y;
+	field.show();
 	while(!owlMoved)
 	{
 		std::cout << "Enter coordinates:" << std::endl;

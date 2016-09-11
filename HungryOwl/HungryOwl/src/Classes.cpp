@@ -63,6 +63,19 @@ void Field::addAnimal(unsigned int x, unsigned int y, Animal* animal)
 	animal = nullptr;
 }
 
+void Field::show() const
+{
+	unsigned int i, j;
+	for(i = 0; i < size; ++i)
+	{
+		for(j = 0; j < size; ++j)
+		{
+			field[i][j].show();
+		}
+		std::cout << std::endl;
+	}
+}
+
 Cell::Cell(): detectedAnimals(0), cellColor(Colors::green), animal(nullptr)
 {}
 
@@ -76,6 +89,20 @@ bool Cell::isFree() const
 
 void Cell::setAnimal(Animal* creature)
 {
+	std::cout << typeid(*creature).name() << std::endl;
 	animal = new Animal(*creature);
+	//поставить статик каст в зависимости от тип ид
 	creature = nullptr;
+}
+
+void Cell::show() const
+{
+	if(animal == nullptr)
+	{
+		std::cout << ". ";
+	}
+	else
+	{
+		std::cout << typeid(*animal).name();
+	}
 }

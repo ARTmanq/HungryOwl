@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <typeinfo>
 
 enum class Colors 
 {
@@ -13,6 +14,7 @@ class Animal
 {
 	public:
 		Animal(){};
+		Animal(unsigned int hp): HP(hp){};
 		virtual ~Animal(){};
 		virtual void injure(){};
 		virtual void move() const{};
@@ -27,6 +29,7 @@ class Cell
 		~Cell(){};
 		bool isFree() const;
 		void setAnimal(Animal*);
+		void show() const;
 	private:
 		unsigned int detectedAnimals;
 		Colors cellColor;
@@ -36,7 +39,7 @@ class Cell
 class Owl : public Animal
 {
 	public:
-		Owl(): Animal(){};
+		Owl(): Animal(3){};
 		virtual ~Owl(){};
 		void move(unsigned int, unsigned int) const{};
 		void attack(Cell&) {};
@@ -45,7 +48,7 @@ class Owl : public Animal
 class Mouse : public Animal
 {
 	public:
-		Mouse(): Animal() {};
+		Mouse(): Animal(1) {};
 		virtual ~Mouse(){};
 		void move() const {};
 };
@@ -53,7 +56,7 @@ class Mouse : public Animal
 class Cat: public Animal
 {
 	public:
-		Cat(){};
+		Cat(): Animal(2){};
 		virtual ~Cat(){};
 		void move() const {};
 };
