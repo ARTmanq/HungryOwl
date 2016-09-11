@@ -23,8 +23,10 @@ class Animal
 class Cell
 {
 	public:
-		Cell(){};
+		Cell();
 		~Cell(){};
+		bool isFree() const;
+		void setAnimal(Animal*);
 	private:
 		unsigned int detectedAnimals;
 		Colors cellColor;
@@ -68,8 +70,8 @@ class Field
 		void moveAnimals() {};
 		void discoverCell(unsigned int, unsigned int) {};
 		Cell& getCell(unsigned int, unsigned int) {};
-		bool checkCell(unsigned int, unsigned int) {};
-		void addAnimal(unsigned int, unsigned int, Animal*) {};
+		bool checkCell(unsigned int, unsigned int);
+		void addAnimal(unsigned int, unsigned int, Animal*);
 	private:
 		std::vector<std::vector<Cell> > field;
 		unsigned int size;
