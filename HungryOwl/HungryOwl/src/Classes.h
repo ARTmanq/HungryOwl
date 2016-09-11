@@ -25,7 +25,6 @@ class Cell
 	public:
 		Cell(){};
 		~Cell(){};
-		void addAnimal(Animal*) {};
 	private:
 		unsigned int detectedAnimals;
 		Colors cellColor;
@@ -46,7 +45,7 @@ class Mouse : public Animal
 	public:
 		Mouse(): Animal() {};
 		virtual ~Mouse(){};
-		void move() const;
+		void move() const {};
 };
 
 class Cat: public Animal
@@ -54,7 +53,7 @@ class Cat: public Animal
 	public:
 		Cat(){};
 		virtual ~Cat(){};
-		void move() const;
+		void move() const {};
 };
 
 
@@ -69,6 +68,8 @@ class Field
 		void moveAnimals() {};
 		void discoverCell(unsigned int, unsigned int) {};
 		Cell& getCell(unsigned int, unsigned int) {};
+		bool checkCell(unsigned int, unsigned int) {};
+		void addAnimal(unsigned int, unsigned int, Animal*) {};
 	private:
 		std::vector<std::vector<Cell> > field;
 		unsigned int size;

@@ -12,20 +12,26 @@ void Field::set(unsigned int s, unsigned int AoM, unsigned int AoC)
 	size = s;
 	amountOfMices = AoM;
 	amountOfCats = AoC;
-	unsigned int i, j;
+	unsigned int i, j, x, y;
 	std::minstd_rand0 gen;
-	for(i = 0; i < s; ++i)
+	for(i = 0; i < AoM; ++i)
 	{
-		std::vector<Cell> currentLine;
-		for(j = 0; j < s; ++j)
+		x = gen() % s;
+		y = gen() % s;
+		if(!checkCell(x, y))
 		{
-			Cell currentCell;
-			unsigned int random = gen() % 100;
-			if(random >= 50)
-			{
-
-
-			}
+			Mouse mouse;
+			addAnimal(x, y, &mouse);
+		}
+	}
+	for(j = 0; j < AoC; ++j)
+	{
+		x = gen() % s;
+		y = gen() % s;
+		if(!checkCell(x, y))
+		{
+			Cat cat;
+			addAnimal(x, y, &cat);
 		}
 	}
 }
