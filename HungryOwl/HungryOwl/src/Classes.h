@@ -16,7 +16,7 @@ class Animal
 		virtual void injure();
 		virtual void move() const;
 	private:
-		int HP;
+		unsigned int HP;
 };
 
 class Owl : public Animal
@@ -41,9 +41,9 @@ class Cell
 {
 	public:
 		Cell();
-		~Cell();
+		~Cell(){};
 	private:
-		int detectedAnimals;
+		unsigned int detectedAnimals;
 		Colors cellColor;
 		Animal *animal;
 };
@@ -53,8 +53,12 @@ class Field
 	public:
 		Field();
 		~Field();
+		void set(unsigned int, unsigned int, unsigned int); 
 		void show() const;
 		void refresh();
 	private:
 		std::vector<Cell> field;
+		unsigned int size;
+		unsigned int amountOfMices;
+		unsigned int amountOfCats;
 };

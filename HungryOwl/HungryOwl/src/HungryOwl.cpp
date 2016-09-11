@@ -3,10 +3,11 @@
 #include "Classes.h"
 
 int getnum();
-void setDifficulty();
+void setDifficulty(Field&);
 
 int main()
 {
+	Field field;
 	std::cout << "---<<<   HUNGRY OWL   >>>---" << std::endl;
 	std::cout << "1. New game" << std::endl;
 	std::cout << "2. Exit" << std::endl;
@@ -19,7 +20,7 @@ int main()
 		{
 			case 1:
 				{
-					setDifficulty();
+					setDifficulty(field);
 					break;
 				}
 			case 2:
@@ -57,7 +58,7 @@ int getnum()
 	return result;
 }
 
-void setDifficulty()
+void setDifficulty(Field& field)
 {
 	std::cout << "   Select difficulty:" << std::endl;
 	std::cout << "1. Easy" << std::endl;
@@ -71,14 +72,17 @@ void setDifficulty()
 		{
 			case 1:
 				{
+					field.set(10, 8, 8);
 					break;
 				}
 			case 2:
 				{
+					field.set(15, 12, 12);
 					break;
 				}
 			case 3:
 				{
+					field.set(20, 16, 16);
 					break;
 				}
 			default:
