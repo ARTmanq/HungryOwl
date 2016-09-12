@@ -76,17 +76,38 @@ void setDifficulty(Field& field)
 		{
 			case 1:
 				{
-					field.set(10, 8, 8);
+					try
+					{
+						field.set(10, 8, 8);
+					}
+					catch(const char* errormsg)
+					{
+						std::cout << errormsg << std::endl;
+					}
 					break;
 				}
 			case 2:
 				{
-					field.set(15, 12, 12);
+					try
+					{
+						field.set(15, 12, 12);
+					}
+					catch(const char* errormsg)
+					{
+						std::cout << errormsg << std::endl;
+					}
 					break;
 				}
 			case 3:
 				{
-					field.set(20, 16, 16);
+					try
+					{
+						field.set(20, 16, 16);
+					}
+					catch(const char* errormsg)
+					{
+						std::cout << errormsg << std::endl;
+					}
 					break;
 				}
 			default:

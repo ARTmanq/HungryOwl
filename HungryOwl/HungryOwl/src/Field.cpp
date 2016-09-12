@@ -1,7 +1,5 @@
 #include "Field.h"
 
-
-
 Cell::Cell(): detectedAnimals(0), cellColor(Colors::green), animal(nullptr)
 {}
 
@@ -58,9 +56,23 @@ void Field::set(unsigned int s, unsigned int AoM, unsigned int AoC)
 		for(j = 0; j < size; ++j)
 		{
 			Cell cell;
-			currentLine.push_back(cell);
+			try
+			{
+				currentLine.push_back(cell);
+			}
+			catch(std::bad_alloc &ba)
+			{
+				throw("!!!Not enough memory!!!");
+			}
 		}
-		field.push_back(currentLine);
+		try
+		{
+			field.push_back(currentLine);
+		}
+		catch(std::bad_alloc &ba)
+		{
+			throw("!!!Not enough memory!!!");
+		}
 	}
 	for(i = 0; i < amountOfMices; ++i)
 	{
@@ -68,8 +80,15 @@ void Field::set(unsigned int s, unsigned int AoM, unsigned int AoC)
 		y = gen() % size;
 		if(checkCell(x, y))
 		{
-			Mouse* mouse = new Mouse;
-			addAnimal(x, y, mouse);
+			try
+			{
+				Mouse* mouse = new Mouse;
+				addAnimal(x, y, mouse);
+			}
+			catch(std::bad_alloc &ba)
+			{
+				throw("!!!Not enough memory!!!");
+			}
 		}
 	}
 	for(j = 0; j < amountOfCats; ++j)
@@ -78,8 +97,15 @@ void Field::set(unsigned int s, unsigned int AoM, unsigned int AoC)
 		y = gen() % size;
 		if(checkCell(x, y))
 		{
-			Cat* cat = new Cat;
-			addAnimal(x, y, cat);
+			try
+			{
+				Cat* cat = new Cat;
+				addAnimal(x, y, cat);
+			}
+			catch(std::bad_alloc &ba)
+			{
+				throw("!!!Not enough memory!!!");
+			}
 		}
 	}
 }
@@ -89,15 +115,29 @@ Field::~Field()
 
 bool Field::checkCell(unsigned int x, unsigned int y)
 {
-	if(field[x][y].isFree())
-		return true;
-	else
-		return false;
+	try
+	{
+		if(field[x][y].isFree())
+			return true;
+		else
+			return false;
+	}
+	catch(std::out_of_range &oor)
+	{
+		throw("!!!Out of range in function Field.checkCell!!!");
+	}
 }
 
 void Field::addAnimal(unsigned int x, unsigned int y, Animal* animal)
 {
-	field[x][y].setAnimal(animal);
+	try
+	{
+		field[x][y].setAnimal(animal);
+	}
+	catch(std::out_of_range &oor)
+	{
+		throw("!!!Out of range in function Field.addAnimal!!!");
+	}
 	animal = nullptr;
 }
 
