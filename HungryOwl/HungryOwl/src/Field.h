@@ -1,25 +1,17 @@
+#pragma once
+#ifndef _FIELD_H_
+#define _FIELD_H_
 #include <iostream>
 #include <vector>
 #include <random>
 #include <typeinfo>
+#include "Animals.h"
 
 enum class Colors 
 {
 	green,
 	yellow,
 	red,
-};
-
-class Animal
-{
-	public:
-		Animal();
-		Animal(unsigned int);
-		virtual ~Animal();
-		virtual void injure();
-		virtual void move() const;
-	private:
-		unsigned int HP;
 };
 
 class Cell
@@ -34,31 +26,6 @@ class Cell
 		unsigned int detectedAnimals;
 		Colors cellColor;
 		Animal *animal;
-};
-
-class Owl : public Animal
-{
-	public:
-		Owl();
-		virtual ~Owl();
-		void move(unsigned int, unsigned int) const;
-		void attack(Cell&);
-};
-
-class Mouse : public Animal
-{
-	public:
-		Mouse();
-		virtual ~Mouse();
-		void move() const;
-};
-
-class Cat: public Animal
-{
-	public:
-		Cat();
-		virtual ~Cat();
-		void move() const;
 };
 
 class Field
@@ -76,3 +43,5 @@ class Field
 		unsigned int amountOfMices;
 		unsigned int amountOfCats;
 };
+
+#endif

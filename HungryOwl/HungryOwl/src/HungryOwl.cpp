@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Field.h"
+#include "Animals.h"
 
 int getnum();
 void setDifficulty(Field&);
