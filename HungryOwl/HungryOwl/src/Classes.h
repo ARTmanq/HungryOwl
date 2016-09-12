@@ -13,11 +13,11 @@ enum class Colors
 class Animal
 {
 	public:
-		Animal(){};
-		Animal(unsigned int hp): HP(hp){};
-		virtual ~Animal(){};
-		virtual void injure(){};
-		virtual void move() const{};
+		Animal();
+		Animal(unsigned int);
+		virtual ~Animal();
+		virtual void injure();
+		virtual void move() const;
 	private:
 		unsigned int HP;
 };
@@ -26,7 +26,7 @@ class Cell
 {
 	public:
 		Cell();
-		~Cell(){};
+		~Cell();
 		bool isFree() const;
 		void setAnimal(Animal*);
 		void show() const;
@@ -39,29 +39,27 @@ class Cell
 class Owl : public Animal
 {
 	public:
-		Owl(): Animal(3){};
-		virtual ~Owl(){};
-		void move(unsigned int, unsigned int) const{};
-		void attack(Cell&) {};
+		Owl();
+		virtual ~Owl();
+		void move(unsigned int, unsigned int) const;
+		void attack(Cell&);
 };
 
 class Mouse : public Animal
 {
 	public:
-		Mouse(): Animal(1) {};
-		virtual ~Mouse(){};
-		void move() const {};
+		Mouse();
+		virtual ~Mouse();
+		void move() const;
 };
 
 class Cat: public Animal
 {
 	public:
-		Cat(): Animal(2){};
-		virtual ~Cat(){};
-		void move() const {};
+		Cat();
+		virtual ~Cat();
+		void move() const;
 };
-
-
 
 class Field
 {
@@ -70,9 +68,6 @@ class Field
 		~Field();
 		void set(unsigned int, unsigned int, unsigned int); 
 		void show() const;
-		void moveAnimals() {};
-		void discoverCell(unsigned int, unsigned int) {};
-		Cell& getCell(unsigned int, unsigned int) {};
 		bool checkCell(unsigned int, unsigned int);
 		void addAnimal(unsigned int, unsigned int, Animal*);
 	private:

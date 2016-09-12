@@ -101,22 +101,4 @@ void game(Field& field, Owl& owl)
 	bool owlMoved = false;
 	unsigned int x, y;
 	field.show();
-	while(!owlMoved)
-	{
-		std::cout << "Enter coordinates:" << std::endl;
-		x = getnum();
-		y = getnum();
-		try
-		{
-			owl.move(x, y);
-			owlMoved = true;
-		}
-		catch(std::invalid_argument &ia)
-		{
-			std::cout << "Invalid coordinates, try again:" << std::endl;
-		}
-	}
-	field.moveAnimals();
-	field.discoverCell(x, y);
-	owl.attack(field.getCell(x, y));
 }
