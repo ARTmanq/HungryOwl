@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Classes.h"
+#include "Field.h"
 
 int getnum();
 void setDifficulty(Field&);
@@ -75,7 +75,7 @@ void setDifficulty(Field& field)
 		{
 			case 1:
 				{
-					field.set(4, 2, 2);
+					field.set(10, 8, 8);
 					break;
 				}
 			case 2:
@@ -98,7 +98,5 @@ void setDifficulty(Field& field)
 
 void game(Field& field, Owl& owl)
 {
-	bool owlMoved = false;
-	unsigned int x, y;
 	field.show();
 }
